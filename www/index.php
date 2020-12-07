@@ -31,7 +31,7 @@
 
 <div id="readMe">
     <div style="text-align: right;"><a href="javascript:;" id="closeReadMe" onclick="$('#readMe').remove()">关闭</a>&nbsp;</div>
-   <?= file_get_contents(ROOT . 'readme.txt'); ?>
+   <?= file_get_contents(ROOT . 'README.md'); ?>
 </div>
 
 <div id="queueBox">

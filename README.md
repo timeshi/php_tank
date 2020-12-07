@@ -1,6 +1,3 @@
-# php_tank
-这是一个服务端使用php（基于swoole扩展）写的多人坦克实时战斗小游戏。功能有：多人战斗，入场排队，排行榜、公用聊天室.系统要求：php7.0,swoole 4.0
-
 <h2>90坦克大乱斗说明</h2>
 
 <h3>一、游戏流程与玩法</h3>
@@ -20,8 +17,10 @@
 4.本地模拟多人，可以打开多个浏览器如:chrome与edge，由于用户身份识别是基于浏览器的，打开单个浏览器的多个窗口无法模拟多人<br/>
 5.由于本人不擅长前端开发，游戏看起来有点卡顿（其实是按帧计算的表现），只要前端加上缓动动画（专业游戏开发前端需要使用canvas而不是dom），就可变得丝滑流畅。
 
-<h3>三、版权没有</h3>
+<h3>三、版权所有</h3>
+github：<a href="https://github.com/timeshi/php_tank" target="_blank">php_tank</a><br/>
 开发商：<a href="https://china-news.net/" target="_blank">China-News.Net</a><br/>
-演示地址：<a href="https://china-news.net/game/play/1001-php-tank" target="_blank">php-tank</a><br/>
+演示地址：<a href="https://china-news.net/game/play/1001-php-tank" target="_blank">php-tank-demo</a><br/>
 作者：一曲小诗，QQ:81769876 <br/>
+技术交流，QQ群：11949906 【PHP游戏开发者群】<br/>
 开发目的：为了向大家宣传，php除了开发web非常便利，有了swoole，开发游戏也是一件利器。<br/>

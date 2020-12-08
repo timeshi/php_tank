@@ -106,6 +106,7 @@ $ws->on("message", function (Swoole\WebSocket\Server $server, $frame){
         $msg = $e->getMessage();
         $json = [
             'act' => 'Error',
+            'code' => $e->getCode(),
             'msg' => $msg,
         ];
         Host::pushByFd($fd, $json);

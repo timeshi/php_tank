@@ -1,5 +1,10 @@
 function Error(data)
 {
+    if (data['code'] < 0){
+        return ;
+    }
+
+
     alert(data['msg']);
 }
 

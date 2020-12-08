@@ -7,7 +7,7 @@
  */
 
 /**
- * 子弹类型
+ * npc子弹
  */
 class Bullet extends Npc
 {
@@ -29,7 +29,15 @@ class Bullet extends Npc
      */
     public $hp = 1;
 
+    /**
+     * @var int
+     */
     public $speed = 20;
+
+    /**
+     * @var int
+     */
+    public $type = 1;
 
     /**
      * 初始化一个对象
@@ -136,6 +144,7 @@ class Bullet extends Npc
         //返回时间
         return [
             'id' => $this->id,
+            'type' => $this->type,
             'dir' => $this->dir,
             'x' => $this->x,
             'y' => $this->y,

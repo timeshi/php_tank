@@ -155,8 +155,8 @@ class Actor extends Obj
         $this->y += $this->speed * $dy;
 
         //防止出界
-        Util::between($this->x, 0, Room::MAP_WEIGHT);
-        Util::between($this->y, 0, Room::MAP_HEIGHT);
+        Util::between($this->x, 25, Room::MAP_WEIGHT - 25);
+        Util::between($this->y, 25, Room::MAP_HEIGHT - 25);
     }
 
     /**

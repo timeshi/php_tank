@@ -11,8 +11,14 @@
  */
 class Room extends Space
 {
+    /**
+     * 房间地图宽度
+     */
     const MAP_WEIGHT = 800 - 1;
 
+    /**
+     * 房间地图高度
+     */
     const MAP_HEIGHT = 800 - 1;
 
     /**
@@ -33,6 +39,34 @@ class Room extends Space
     public $userWaitQueue = [];
 
     /**
+     * 当前房间内的机器人列表，用于陪玩
+     * @var Robot[]
+     */
+    public $robotList = [];
+
+    /**
+     * 初始化room对象
+     * Room constructor.
+     */
+    public function __construct()
+    {
+        $this->initEnv();
+    }
+
+    /**
+     * 初始化环境，增加机器人
+     */
+    public function initEnv()
+    {
+        for ($i=1; $i<=2; $i++) {
+            $userId = Host::getAutoUserId();
+            $robot = new Robot($userId);
+            $robot->name = "陪玩坦克【{$i}】";
+            $this->robotList[$userId] = $robot;
+        }
+    }
+
+    /**
      *
      */
     public function onEvent()
@@ -43,6 +77,19 @@ class Room extends Space
 
         //让用户加入游戏
         $this->consumeUserWaitQueue();
+
+        //每个一秒触发一次(加入陪玩机器人)
+        if (Timer::$index % 10 < 1) {
+           if (count($this->userList) < 3) {
+               foreach ($this->robotList as $robotId => $robot) {
+                   if (isset($this->userList[$robotId]) || isset($this->userWaitQueue[$robotId])) {
+                        continue;
+                   }
+                   $robot->queueJoin();
+                   break;
+               }
+           }
+        }
     }
 
     /**
@@ -53,8 +100,12 @@ class Room extends Space
         if (count($this->userList) < self::USER_MAX && count($this->userWaitQueue) > 0) {
             $user = array_shift($this->userWaitQueue);
 
-
             $user->beforeEnter();
+
+            //绑定房间
+            $user->room = $this;
+
+            //绑定关系
             $this->userList[$user->userId] = $user;
             $this->actorList[$user->userId] = $user;
 
@@ -62,6 +113,8 @@ class Room extends Space
             Host::pushToAllUser('UserInit', $postData);
 
             Host::pushToAllUser('QueueExit', ['id' => $user->id]);
+
+            Logger::debug('UserInit', $postData);
         }
     }
 }

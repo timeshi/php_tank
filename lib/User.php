@@ -111,17 +111,24 @@ class User extends Actor
 
     /**
      * 玩家开火
+     * @param int $dir 子弹朝向
      */
-    public function fire()
+    public function fire($dir = 0)
     {
         //防止客户端捣乱
         $this->checkCd(__FUNCTION__, 10);
 
-        $bullet = Bullet::initByUser($this);
+        //使用角色当前的朝向
+        if ($dir < 1) {
+            $dir = $this->dir;
+        }
+
+        $bullet = Bullet::initByUser($this, $dir);
         $bullet->room->actorList[$bullet->id] = $bullet;
 
         $bulletData = $bullet->getInitData();
         Host::pushToAllUser('BulletInit', $bulletData);
+        Logger::debug(__METHOD__, $bulletData);
     }
 
     /**
@@ -250,7 +257,7 @@ class User extends Actor
      */
     public function sendChatMsg($content)
     {
-        $this->checkCd(__FUNCTION__, 30);
+        //$this->checkCd(__FUNCTION__, 30);
         $pushData = [
             'name' => '系统',
             'content' =>  date('[H:i:s]') . str_replace('{name}', '【' . $this->name . '】', $content),

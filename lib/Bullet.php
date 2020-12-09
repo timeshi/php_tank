@@ -42,25 +42,27 @@ class Bullet extends Npc
     /**
      * 初始化一个对象
      * @param User $user
+     * @param int $dir 子弹朝向
      * @return static
      */
-    public static function initByUser($user)
+    public static function initByUser($user, $dir)
     {
         $npcId = self::getAutoId();
-        return new self($npcId, $user);
+        return new self($npcId, $user, $dir);
     }
 
     /**
      * Bullet constructor.
      * @param int $npcId
      * @param User $user
+     * @param int $dir
      */
-    public function __construct($npcId, $user)
+    public function __construct($npcId, $user, $dir)
     {
         $this->id = $npcId;
         $this->owner = $user;
         $this->room = $user->room;
-        $this->dir = $user->dir;
+        $this->dir = $dir;
         $this->x = $user->x;
         $this->y = $user->y;
     }

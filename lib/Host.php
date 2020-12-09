@@ -112,7 +112,9 @@ class Host
         if (is_array($data)) {
             $data = Json::encode($data);
         }
+
         Host::$ws->push($fd, $data);
+        Logger::debug(__METHOD__, $fd, $data);
     }
 
     /**
@@ -149,6 +151,7 @@ class Host
 
             //推送具体信息
             Host::$ws->push($fd, $data);
+            Logger::debug(__METHOD__, $fd, $data);
         }
     }
 
@@ -176,6 +179,7 @@ class Host
 
             //推送具体信息
             Host::$ws->push($fd, $data);
+            Logger::debug(__METHOD__, $fd, $data);
         }
     }
 

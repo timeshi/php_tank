@@ -72,7 +72,6 @@ class Action
         $user = Host::$userList[$userId];
         $user->fd = $fd;
         $user->name = htmlspecialchars(mb_substr($data['name'], 0, 12)); //防止非法字符串
-        $user->room = Host::$room; //默认绑定第一个room
 
         //关联fd与user的关系
         Host::$fdList[$fd] = $user;

@@ -59,6 +59,7 @@ set_error_handler(function($errno, $message) {
 //系统初始化:自定义类加载函数，在类未引用的时候，调用该函数，延迟加载
 spl_autoload_register(function($className) {
     $className = str_replace('_', '/', $className);
+    $className = str_replace('\\', '/', $className); //把命名空间的斜线也转换成路径
     $file = ROOT_LIB . $className . '.php';
     if (is_file($file)) {
         require $file;

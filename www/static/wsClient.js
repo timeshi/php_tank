@@ -61,9 +61,6 @@ function getMsTime()
 $(function(){
     wsConnect();
     let keyMap = {
-        87 : 0, //w
-        119 : 0, //w
-
         68 : 1, //d
         100 : 1, //D
 
@@ -72,6 +69,9 @@ $(function(){
 
         65 : 3, //a
         97 : 3, //A
+
+        87 : 4, //w
+        119 : 4, //w
     }
 
     let keyDownMap = {}

@@ -182,8 +182,4 @@ class Host
             Logger::debug(__METHOD__, $fd, $data);
         }
     }
-
 }
-
-//初始化环境
-Host::initEnv();

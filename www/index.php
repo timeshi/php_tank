@@ -18,6 +18,7 @@
         let wsUrl = window.location.href.replace('http', 'ws');
         let lastMoveMs = 0; //最后移动事件
         let lastFireMs = 0; //最后发射时间
+        let lastBombMs = 0; //最后放蛋时间
     </script>
 </head>
 

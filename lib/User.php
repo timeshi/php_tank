@@ -136,7 +136,19 @@ class User extends Actor
      */
     public function bomb()
     {
-        $this->checkCd(__FUNCTION__, 50);
+        $this->checkCd(__FUNCTION__, 30);
+
+
+        $bullet = Bullet::initByUser($this, $this->dir);
+        $bullet->setKillRadius(45);
+        $bullet->lifeTime = 100;
+        $bullet->speed = 0;
+        $bullet->type = Bullet::TYPE_BOMB;
+        $bullet->room->actorList[$bullet->id] = $bullet;
+
+        $bulletData = $bullet->getInitData();
+        Host::pushToAllUser('BulletInit', $bulletData);
+        Logger::debug(__METHOD__, $bulletData);
     }
 
     /**

@@ -86,7 +86,7 @@ function UserInit(data)
 
 function BulletInit(data)
 {
-    let html = '<bullet id="' + data.id + '" style="left:' + data.x + 'px; top:' + data.y + 'px;"><bulletBg></bulletBg></bullet>';
+    let html = '<bullet id="' + data.id + '" style="left:' + data.x + 'px; top:' + data.y + 'px;"><bulletType' + data.type + '></bulletType' + data.type + '></bullet>';
     let me = $(html);
     me.appendTo("#bulletLayer");
     me.animate({left:data.toX + "px", top:data.toY + "px"}, data.toTime, 'linear', function(){

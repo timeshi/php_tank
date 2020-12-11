@@ -166,4 +166,16 @@ class Action
         }
         $user->fire();
     }
+
+    /**
+     * 放一个炸弹
+     * @param User $user
+     */
+    public static function doUserBomb($user)
+    {
+        if ($user->isDeath) {
+            return;
+        }
+        $user->bomb();
+    }
 }

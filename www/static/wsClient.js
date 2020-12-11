@@ -77,6 +77,7 @@ $(function(){
     let keyDownMap = {}
     onkeydown = onkeyup = function (event) {
         let keyCode = event.which;
+        console.log("keyCode", keyCode);
         if (event.type == 'keydown') {
             keyDownMap[keyCode] = true;
 
@@ -86,6 +87,14 @@ $(function(){
                 if (nowTime - lastFireMs >= 1000) { //一秒才允许发一个子弹
                     lastFireMs = nowTime;
                     doUserFire();
+                }
+            }
+            //直接发射炮弹
+            if (myUserId > 0  && (keyCode==75 || keyCode == 107)) {
+                let nowTime = getMsTime();
+                if (nowTime - lastBombMs >= 3000) { //一秒才允许发一个子弹
+                    lastBombMs = nowTime;
+                    doUserBomb();
                 }
             }
         } else {

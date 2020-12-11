@@ -80,6 +80,14 @@ function doUserFire()
     wsClient.doAct(data);
 }
 
+function doUserBomb()
+{
+    let data = {
+        act : 'doUserBomb'
+    }
+    wsClient.doAct(data);
+}
+
 //用户聊天
 function doChat(content)
 {

@@ -33,6 +33,7 @@ body{ font-size: 12px; background: #ffffff; width: 100%; height: 100%; margin: 0
 
 #bulletLayer {width: 800px; height: 800px; position: relative; left: 25px; top: 25px;}
 bullet{ width: 1px; height: 1px; position: absolute; left: 200px; top: 220px;}
-bulletBg{ width: 6px; height: 6px; background: #ffffff; position: absolute; left: -3px; top: -3px; border-radius: 6px;}
+bulletType1{ width: 6px; height: 6px; background: #ffffff; position: absolute; left: -3px; top: -3px; border-radius: 6px;}
+bulletType2{ width: 30px; height: 30px; background: #ac9430; position: absolute; left: -15px; top: -15px; border-radius: 2px;}
 
 h2{ text-align: center; color: #36940c;}

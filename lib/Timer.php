@@ -30,6 +30,12 @@ class Timer
     public static $eventList = [];
 
     /**
+     * 最后一帧耗时
+     * @var float
+     */
+    public static $lastFrameDeltaTime = 0;
+
+    /**
      * 初始化全局session的环境
      */
     public static function initEnv()
@@ -37,6 +43,10 @@ class Timer
         //初始化统一的事件发生器
         swoole_timer_tick(self::FRAME_MS, function () {
             self::$index ++;
+
+            //本帧开始执行时间
+            $frameStartTime = microtime(true);
+
             try {
                 foreach (self::$eventList as $id => $obj) {
                     $obj->onEvent();
@@ -44,12 +54,17 @@ class Timer
             } catch (Throwable $e) { //记录异常
                 Logger::logException($e);
             }
+
+            //本帧的实际执行时间
+            self::$lastFrameDeltaTime = number_format(microtime(true) - $frameStartTime, 4);
+            Logger::debug('frameTime', self::$lastFrameDeltaTime);
         });
     }
 
     /**
-     * 事件队列里添加一个对象
-     * @param Obj $obj
+     * 事件队列里添加一个对象(只能添加空间场景对象)，由空间再带动空间里的actor运动
+     * 避免直接添加actor对象
+     * @param Space $obj
      */
     public static function add($obj)
     {

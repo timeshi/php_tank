@@ -19,8 +19,8 @@
 
 <h3>三、版权所有</h3>
 github：<a href="https://github.com/timeshi/php_tank" target="_blank">php_tank</a><br/>
-开发商：<a href="https://china-news.net/" target="_blank">China-News.Net</a><br/>
-演示地址：<a href="https://china-news.net/game/play/1001-php-tank" target="_blank">php-tank-demo</a><br/>
+开发商：<a href="http://www.laoziliao.net/" target="_blank">老资料网</a><br/>
+演示地址：<a href="http://www.laoziliao.net/game/play/1001-php-tank" target="_blank">php-tank-demo</a><br/>
 作者：一曲小诗，QQ:81769876 <br/>
 技术交流，QQ群：11949906 【PHP游戏开发者群】<br/>
 开发目的：为了向大家宣传，php除了开发web非常便利，有了swoole，开发游戏也是一件利器。<br/>
